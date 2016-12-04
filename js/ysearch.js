@@ -47,3 +47,32 @@ function outputTwentyVideosByDate() {
   });
 }
 
+
+function outputTwentyVideosBySortAndAccordion() {
+  // prepare the search request 
+  var requestSearchByDate = gapi.client.youtube.search.list({
+             q: $("#search").val(),
+          part: 'id',
+          type: 'video',
+         order: 'date',
+    maxResults: countOfVideo
+  }); 
+  
+  requestSearchByDate.execute(function(response) {
+    var results = response.result;
+    //get array of video ids
+    var videoIds = results.items.map(function(item) {
+      return item['id']['videoId'];
+    })
+
+    //prepare the request videos
+    var requestVideosByViewCount = gapi.client.youtube.videos.list({
+              id: videoIds.toString(),    
+            part: 'snippet, statistics',
+      maxResults: countOfVideo
+    });
+
+    
+
+  });
+}
