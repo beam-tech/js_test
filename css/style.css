@@ -1,0 +1,13 @@
+.ss_button { 
+    background-color: #F60;
+    border-bottom: 1px solid #FFFFFF;
+    cursor: pointer;
+    padding: 10px;
+    color: #FFFFFF;
+}
+    
+.ss_content {
+    background-color: #EFEFEF;
+    display: none;
+    padding: 10px;
+}
