@@ -81,6 +81,26 @@ function outputTwentyVideosBySortAndAccordion() {
         return b.statistics.viewCount - a.statistics.viewCount;
       });
 
+      //output result
+      $("#output").empty();
+      $.each(results.items, function(index, item) {
+        $('<div class="ss_button">').append(item.snippet.title).appendTo('#output');
+        $('<iframe>', {
+                      src: 'https://www.youtube.com/embed/' + item.id,
+                    align: 'top',
+              frameborder: 0,
+          allowFullScreen: ''
+        }).appendTo('#output')
+          //.css('display', 'block')
+          .wrap('<div class="ss_content"></div>')
+          .after(
+             '<p><b>название ролика: </b>' + item.snippet.title         + '</p>' +
+             '<p><b>автор: </b>'           + item.snippet.channelTitle  + '</p>' +
+             '<p><b>дата публикации: </b>' + new Date(item.snippet.publishedAt).toLocaleDateString("ru-RU")  + '</p>' +
+             '<p><b>просмотры : </b>'      + item.statistics.viewCount + '</p>'
+          );
+      });
+
 
     });
   });
