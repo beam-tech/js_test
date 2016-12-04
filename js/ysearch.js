@@ -8,3 +8,17 @@ function init() {
       // yt api is ready
   });
 }
+
+$(function() {
+  $("form").on("submit", function(e) {
+    var sortVideoByViews    = $('#output').data('sortVideoByViews');
+    e.preventDefault();
+    
+    if (!sortVideoByViews) {
+      outputTwentyVideosByDate();
+    } else {
+      outputTwentyVideosBySortAndAccordion();
+    }
+  });  
+});
+
