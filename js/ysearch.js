@@ -73,6 +73,15 @@ function outputTwentyVideosBySortAndAccordion() {
     });
 
     
+    requestVideosByViewCount.execute(function(response) {
+      results = response.result;
 
+        //sort video(object) by view count
+      results.items.sort(function(a, b) {
+        return b.statistics.viewCount - a.statistics.viewCount;
+      });
+
+
+    });
   });
 }
